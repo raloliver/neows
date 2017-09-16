@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
 <body>
-    <div class="wrap">
-        
-    </div>
+    <section class="container">
+        <header ng-include="'/template/header.html'"></header>
+        <aside ng-include="'/template/menu.html'"></aside>
+        <div class="content-wrapper" ui-view></div>
+        <footer ng-include="'/template/footer.html'" ></footer>
+    </section>
     <script src="/assets/js/deps.min.js"></script>
     <script src="/assets/js/app.min.js"></script>
 </body>

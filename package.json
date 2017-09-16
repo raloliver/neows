@@ -1,6 +1,7 @@
 {
   "name": "neows",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "gulp",
@@ -33,6 +34,5 @@
   "bugs": {
     "url": "https://github.com/raloliver/neows/issues"
   },
-  "homepage": "https://github.com/raloliver/neows#readme",
-  "description": ""
+  "homepage": "https://github.com/raloliver/neows#readme"  
 }

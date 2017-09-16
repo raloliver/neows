@@ -1,0 +1,22 @@
+<div class="panel panel-default" ng-controller="asteroidController as vm">
+    <div class="panel-heading">Total de Asteróides detectados: {{:: vm.asteroids.element_count}}</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Perigoso</th>
+                <th>Data</th>
+                <th>Nome</th>
+                <th>Velocidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="asteroid in vm.asteroids.near_earth_objects">
+                <th><i class="fa fa-check-square-o" aria-hidden="true"></i></th>
+                <td>{{:: asteroid[0].close_approach_data[0].close_approach_date}}</td>
+                <td>{{:: asteroid[0].name}}</td>
+                <td>{{:: asteroid[0].close_approach_data[0].relative_velocity.kilometers_per_second}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
