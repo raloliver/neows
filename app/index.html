@@ -14,11 +14,10 @@
 </head>
 
 <body>
-    <header ng-include="'/template/header.html'"></header>
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-include="'/template/header.html'"></nav>
     <section class="container-fluid">
         <div class="row">
-            <aside class="col-md-2" ng-include="'/template/menu.html'"></aside>
-            <main class="col-md-10" ui-view></main>
+            <main class="col-md-12 well-lg" ui-view></main>
         </div>
         <footer ng-include="'/template/footer.html'"></footer>
     </section>
