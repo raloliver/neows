@@ -1,11 +1,19 @@
 {
   "name": "neows",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "@raloliver",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raloliver/neows.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raloliver/neows/issues"
+  },
+  "homepage": "https://github.com/raloliver/neows#readme",
+  "description": ""
 }
