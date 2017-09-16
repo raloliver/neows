@@ -8,6 +8,9 @@ angular.module('neows').config([
         }).state('fastest', {
             url: "/asteroids/fastest",
             templateUrl: "asteroids/fastest.html"
+        }).state('alerts', {
+            url: "/alerts",
+            templateUrl: "alerts/alerts.html"
         })
 
         $urlRouterProvider.otherwise('/asteroids')

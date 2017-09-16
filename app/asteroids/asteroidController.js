@@ -12,8 +12,7 @@
         vm.getAsteroid = function () {
             $http.get(url).then(function (response) {
                 vm.asteroid = []
-                vm.asteroids = response.data
-                console.log(vm.asteroids)
+                vm.asteroids = response.data                
             })
         }
 
