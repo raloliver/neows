@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="neows">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +12,18 @@
     <link rel="stylesheet" href="/assets/css/deps.min.css">
     <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
+
 <body>
-    <section class="container">
-        <header ng-include="'/template/header.html'"></header>
-        <aside ng-include="'/template/menu.html'"></aside>
-        <div class="content-wrapper" ui-view></div>
-        <footer ng-include="'/template/footer.html'" ></footer>
+    <header ng-include="'/template/header.html'"></header>
+    <section class="container-fluid">
+        <div class="row">
+            <aside class="col-md-2" ng-include="'/template/menu.html'"></aside>
+            <main class="col-md-10" ui-view></main>
+        </div>
+        <footer ng-include="'/template/footer.html'"></footer>
     </section>
     <script src="/assets/js/deps.min.js"></script>
     <script src="/assets/js/app.min.js"></script>
 </body>
+
 </html>
