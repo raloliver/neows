@@ -1,16 +1,18 @@
 (function () {
     angular.module('neows').controller('asteroidController', [
         '$http',
+        'tabs',
         'moment',
         'asteroidService',
         AsteroidController
     ])
 
-    function AsteroidController($http, moment, asteroidService) {
-
-        //properties
+    function AsteroidController($http, tabs, moment, asteroidService) {
         const vm = this
         const momentDate = Date.now()
+
+        //properties
+        vm.activeDateTab = null
         vm.asteroid = []
         vm.asteroids = {}
         vm.endDate = moment(momentDate).format("YYYY-MM-DD")
@@ -21,7 +23,7 @@
         //functions
         vm.getAsteroids = function (startDate, endDate) {
             asteroidService.getAsteroidList(startDate, endDate)
-                .then((response) => vm.updateAsteroids(response.data))
+                .then((res) => vm.updateAsteroids(res.data))            
         }
 
         vm.updateAsteroids = function (data) {
@@ -31,9 +33,9 @@
                 .map(key => {
                     return {
                         date: key,
-                        near_earth_objects: vm.asteroids.near_earth_objects[key]
+                        near_earth_object: vm.asteroids.near_earth_objects[key]
                     }
-                })            
+                })                            
         }
 
         //methods

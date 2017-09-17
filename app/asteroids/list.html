@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Total de Asteróides detectados: {{:: vm.asteroids.element_count}}</div>
+    <div class="panel-heading">Total de Asteróides detectados no dia <u>{{:: asteroids.date | date:'dd/MM/yyyy'}}</u> : <strong>{{:: asteroids.near_earth_object.length}}</strong></div>
     <table class="table">
         <thead>
             <tr>
@@ -10,11 +10,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="asteroid in vm.asteroids.near_earth_objects">
-                <td><i class="fa fa-check-square-o" aria-hidden="true"></i></td>
-                <td>{{:: asteroid[0].close_approach_data[0].close_approach_date}}</td>
-                <td>{{:: asteroid[0].name}}</td>
-                <td>{{:: asteroid[0].close_approach_data[0].relative_velocity.kilometers_per_hour}}</td>
+            <tr ng-repeat="asteroid in asteroids.near_earth_object">
+                <td><i ng-show="asteroid.is_potentially_hazardous_asteroid" class="fa fa-check text-warning"></i></td>
+                <td>{{:: asteroid.close_approach_data[0].close_approach_date | date:'dd/MM/yyyy'}}</td>
+                <td>{{:: asteroid.name}}</td>
+                <td>{{:: asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour}}</td>
             </tr>
         </tbody>
     </table>
