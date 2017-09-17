@@ -12,12 +12,12 @@
   "devDependencies": {
     "angular": "^1.6.5",
     "angular-animate": "^1.6.5",
+    "angular-moment": "^1.0.1",
     "angular-ui-router": "^1.0.3",
     "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^3.3.7",
     "bootswatch": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "jquery": "^2.2.3",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
@@ -26,7 +26,8 @@
     "gulp-uglifycss": "^1.0.8",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "jquery": "^2.2.3"
   },
   "repository": {
     "type": "git",

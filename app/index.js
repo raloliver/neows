@@ -1,4 +1,5 @@
 angular.module('neows', [
+    'ngAnimate',    
     'ui.router',
-    'ngAnimate'    
+    'angularMoment'
 ])
