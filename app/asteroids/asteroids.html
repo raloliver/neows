@@ -2,10 +2,10 @@
 
 <section ng-controller="asteroidController as vm">
     <ul class="nav nav-tabs">
-        <li ng-repeat="asteroidsDate in vm.asteroid | orderBy: 'date'" ng-class="{active: $first}"><a href="#tab{{:: asteroidsDate.date | date:'dd'}}" data-toggle="tab" ng-click="vm.activeDateTab = asteroidsDate">{{:: asteroidsDate.date | date:'dd/MM/yyyy'}}</a></li>
+        <li ng-repeat="asteroidsDate in vm.asteroid | orderBy: 'date'"><a href="#tab{{:: asteroidsDate.date | date:'dd'}}" data-toggle="tab" ng-click="vm.activeDateTab = asteroidsDate">{{:: asteroidsDate.date | date:'dd/MM/yyyy'}}</a></li>
     </ul>
     <div class="tab-content" ng-repeat="asteroids in vm.asteroid | orderBy: 'date'">
-        <div class="tab-pane fade in" id="tab{{:: asteroids.date | date:'dd'}}" ng-class="{active: vm.activeDateTab == asteroids" ng-include="'asteroids/list.html'">
+        <div class="tab-pane fade in" id="tab{{:: asteroids.date | date:'dd'}}" ng-class="{active: vm.activeDateTab == asteroids}"  ng-include="'asteroids/list.html'">
         </div>
     </div>
 </section>
