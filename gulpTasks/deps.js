@@ -7,9 +7,11 @@ gulp.task('deps', ['deps.js', 'deps.css', 'deps.fonts'])
 
 gulp.task('deps.js', function(){    
     gulp.src([
+        'node_modules/moment/min/moment-with-locales.min.js',
         'node_modules/angular/angular.min.js',
+        'node_modules/angular-animate/angular-animate.min.js',            
         'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-        'node_modules/angular-animate/angular-animate.min.js',        
+        'node_modules/angular-moment/angular-moment.min.js',
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js'
     ]) 

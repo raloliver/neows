@@ -4,7 +4,7 @@ angular.module('neows').constant('consts', {
     owner: '@raloliver',
     year: '2017',
     site: 'http://raloliver.com.br',
-    apiKEY: 'N7LkblDsc5aen05FJqBQ8wU4qSdmsftwJagVK7UD',
+    apiKEY: '2f6giEMBBC4SHtKn26HLm3fLH3IIhZD4Vjk2HMHl', //N7LkblDsc5aen05FJqBQ8wU4qSdmsftwJagVK7UD
     apiURL: 'https://api.nasa.gov/neo/rest/v1',
     userKey: '_neows_app_user'
 }).run(['$rootScope', 'consts', function ($rootScope, consts) {
