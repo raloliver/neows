@@ -1,14 +1,15 @@
 (function () {
     angular.module('neows').controller('asteroidController', [
-        '$http',
+        '$scope',
         '$rootScope',
+        '$http',
         'tabs',
         'moment',
         'asteroidService',
         AsteroidController
     ])
 
-    function AsteroidController($http, $rootScope, tabs, moment, asteroidService) {
+    function AsteroidController($scope, $rootScope, $http, tabs, moment, asteroidService) {
         const vm = this
         const momentDate = Date.now()
 
@@ -16,6 +17,7 @@
         vm.activeDateTab = null
         vm.asteroid = []
         vm.asteroids = {}
+        vm.initDateChange = true
         vm.endDate = moment(momentDate).format("YYYY-MM-DD")
         vm.endSetDate = moment(momentDate).toDate();
         vm.startDate = moment(vm.endDate).subtract(5, "days").format("YYYY-MM-DD")
@@ -28,7 +30,7 @@
         }
 
         vm.sendChangeDate = function (is) {
-            vm.firstChange = is
+            vm.initDateChange = is
 
             vm.startSetDate = moment(vm.startDate).toDate()
             vm.endSetDate = moment(vm.endDate).toDate()
@@ -51,23 +53,29 @@
         }
 
         //methods
-        vm.endDateMax = function (date) {
-            const intervalDate = vm.rangeDate(vm.startSetDate, date)
-            return intervalDate > 7 || intervalDate < 0 ? false : true
+        vm.endDateMax = function () {
+            $scope.$broadcast('endSetDate');
+        }
+
+        vm.endDateBeforeRender = function ($view, $dates) {
+            if (vm.startSetDate) {
+                let activeDate = moment(vm.startSetDate).subtract(1, $view)
+                let maxDaysAfter = moment(vm.startSetDate).add(5, 'day')
+
+                $dates.filter(function (date) {
+                    return date.localDateValue() >= maxDaysAfter.valueOf()       
+                    return date.localDateValue() >= activeDate.valueOf()       
+                }).forEach(function (date) {
+                    date.selectable = false
+                })
+            }
         }
 
         vm.formatDate = function (format) {
             const [year, month, day] = format.split('-')
             const date = new Date(year, month - 1, day)
 
-            return date;
-        }
-
-        vm.rangeDate = function (startDate, endDate) {
-            const dateStart = moment(startDate)
-            const dateEnd = moment(endDate)
-
-            return dateEnd.diff(dateStart, 'days')
+            return date
         }
 
         vm.updateRangeDate = function (startDate, endDate) {
@@ -81,6 +89,14 @@
         //init
         vm.getAsteroids(vm.startDate, vm.endDate)
         vm.sendChangeDate(true)
+        $scope.$watch('vm.startSetDate', () => {
+            debugger;
+            if (!vm.initDateChange) {                
+                vm.endSetDate = undefined
+            } else {
+                vm.initDateChange = !vm.initDateChange;
+            }
+        });
     }
 
 })()

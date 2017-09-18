@@ -1,5 +1,7 @@
 angular.module('neows', [
     'ngAnimate',    
     'ui.router',
-    'angularMoment'
+    'angularMoment',
+    'ui.bootstrap.datetimepicker',
+    'ui.dateTimeInput'
 ])

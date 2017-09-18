@@ -9,7 +9,18 @@
                         <ul class="nav nav-stacked">
                             <li><strong>Data Inicial</strong></li>
                             <li>
-                                <input type="date" class="form-control" name="startDate" min="" ng-model="vm.startSetDate" />
+                                <div class="dropdown dropdownStartSetDate">
+                                    <a class="dropdown-toggle" id="dropdownStartSetDate" role="button" data-toggle="dropdown" data-target=".dropdownStartSetDate"
+                                        href="#">
+                                        <div class="input-group">
+                                            <input type="text" id="startSetDate" name="startSetDate" class="form-control" ng-model="vm.startSetDate" date-time-input="DD/MM/YYYY">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="vm.startSetDate" datetimepicker-config="{ dropdownSelector: '#dropdownStartDate', startView:'day', minView:'day' }"></datetimepicker>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -17,7 +28,19 @@
                         <ul class="nav nav-stacked">
                             <li><strong>Data Final</strong></li>
                             <li>
-                                <input type="date" class="form-control" name="endDate" min="{{vm.startSetDate}}" max="{{vm.endDateMax()}}" ng-model="vm.endSetDate" />
+                                <div class="dropdown dropdownEndSetDate">
+                                    <a class="dropdown-toggle" id="dropdownEndSetDate" role="button" data-toggle="dropdown" data-target=".dropdownEndSetDate"
+                                        href="#">
+                                        <div class="input-group">
+                                            <input type="text" id="endSetDate" name="endSetDate" class="form-control" ng-model="vm.endSetDate" date-time-input="DD/MM/YYYY">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="vm.endSetDate" datetimepicker-config="{ dropdownSelector: '#endSetDate', startView:'day', minView:'day', renderOn: 'endSetDate' }"
+                                            on-set-time="vm.endDateOnSetTime()" before-render="vm.endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -25,7 +48,7 @@
                         <ul class="nav nav-stacked">
                             <li>&nbsp;</li>
                             <li>
-                                <button class="btn btn-primary" type="button" ng-click="vm.updateRangeDate(vm.startCalendarDate, vm.endCalendarDate)">Filtrar</button>
+                                <button class="btn btn-primary" type="button" ng-click="vm.updateRangeDate(vm.startSetDate, vm.endSetDate)">Filtrar</button>
                             </li>
                         </ul>
                     </div>
