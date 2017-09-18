@@ -1,0 +1,15 @@
+<h3 class="page-header text-center">Asteróides: Mais Rápidos</h3>
+
+<div ng-controller="fastestController as vm">
+    <div class="panel panel-default">
+        <div class="panel-heading">Asteróides
+            <u>mais rápidos</u> nos últimos: <strong>7 dias</strong></div>
+        <div class="list-group" ng-repeat="asteroids in vm.asteroid">            
+            <span class="list-group-item" ng-repeat="asteroid in asteroids.near_earth_object">
+                <span class="badge">{{:: asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour | number:0}} km/h</span>
+                <p><strong class="list-group-item-heading">{{:: asteroid.name}}</strong></p>
+                <p class="list-group-item-text">{{:: asteroid.close_approach_data[0].close_approach_date | date:'dd/MM/yyyy'}}</p>
+            </span>
+        </div>
+    </div>
+</div>
