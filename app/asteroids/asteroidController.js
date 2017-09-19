@@ -26,9 +26,9 @@
         //functions
         vm.getAsteroids = function (startDate, endDate) {
             asteroidService.getAsteroidList(startDate, endDate)
-                .then((res) => vm.updateAsteroids(res.data))
+                .then((res) => vm.listAsteroids(res.data))
         }
-
+        
         vm.sendChangeDate = function (is) {
             vm.initDateChange = is
 
@@ -40,7 +40,7 @@
             })
         }
 
-        vm.updateAsteroids = function (data) {
+        vm.listAsteroids = function (data) {
             vm.asteroids = data
 
             vm.asteroid = Object.keys(vm.asteroids.near_earth_objects)
@@ -50,11 +50,11 @@
                         near_earth_object: vm.asteroids.near_earth_objects[key]
                     }
                 })
-        }
+        }      
 
-        //methods
+        //methods   
         vm.endDateMax = function () {
-            $scope.$broadcast('endSetDate');
+            $scope.$broadcast('endSetDate')
         }
 
         vm.endDateBeforeRender = function ($view, $dates) {
@@ -63,19 +63,12 @@
                 let maxDaysAfter = moment(vm.startSetDate).add(5, 'day')
 
                 $dates.filter(function (date) {
-                    return date.localDateValue() >= maxDaysAfter.valueOf()       
-                    return date.localDateValue() >= activeDate.valueOf()       
+                    return date.localDateValue() >= maxDaysAfter.valueOf()
+                    return date.localDateValue() >= activeDate.valueOf()
                 }).forEach(function (date) {
                     date.selectable = false
                 })
             }
-        }
-
-        vm.formatDate = function (format) {
-            const [year, month, day] = format.split('-')
-            const date = new Date(year, month - 1, day)
-
-            return date
         }
 
         vm.updateRangeDate = function (startDate, endDate) {
@@ -91,10 +84,10 @@
         vm.sendChangeDate(true)
         $scope.$watch('vm.startSetDate', () => {
             debugger;
-            if (!vm.initDateChange) {                
+            if (!vm.initDateChange) {
                 vm.endSetDate = undefined
             } else {
-                vm.initDateChange = !vm.initDateChange;
+                vm.initDateChange = !vm.initDateChange
             }
         });
     }
