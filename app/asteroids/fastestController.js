@@ -40,8 +40,6 @@
                             })
                     }
                 })
-            
-            console.log(vm.asteroid)
         }
 
         vm.getAsteroidsFastest(vm.startDate, vm.endDate)
