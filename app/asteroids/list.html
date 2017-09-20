@@ -8,6 +8,7 @@
                 <th>Nome</th>
                 <th>Velocidade</th>
                 <th>Perigoso</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -15,7 +16,11 @@
                 <td>{{:: asteroid.close_approach_data[0].close_approach_date | date:'dd/MM/yyyy'}}</td>
                 <td>{{:: asteroid.name}}</td>
                 <td>{{:: asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour | number:0}} km/h</td>
-                <td><i ng-show="asteroid.is_potentially_hazardous_asteroid" class="fa fa-check text-warning"></i></td>
+                <td><i ng-show="asteroid.is_potentially_hazardous_asteroid" class="fa fa-check text-danger"></i></td>
+                <td>
+                    <a href="#!" title="Criar Alerta" class="well-sm"><i class="fa fa-exclamation-triangle text-warning"></i></a>
+                    <a href="#!" title="Exluir Alerta" class="well-sm"><i class="fa fa-trash-o text-muted"></i></a>
+                </td>
             </tr>
         </tbody>
     </table>

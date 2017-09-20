@@ -28,7 +28,7 @@
             asteroidService.getAsteroidList(startDate, endDate)
                 .then((res) => vm.listAsteroids(res.data))
         }
-        
+
         vm.sendChangeDate = function (is) {
             vm.initDateChange = is
 
@@ -50,7 +50,7 @@
                         near_earth_object: vm.asteroids.near_earth_objects[key]
                     }
                 })
-        }      
+        }
 
         //methods   
         vm.endDateMax = function () {
@@ -89,7 +89,7 @@
             } else {
                 vm.initDateChange = !vm.initDateChange
             }
-        });
+        })
     }
 
 })()
