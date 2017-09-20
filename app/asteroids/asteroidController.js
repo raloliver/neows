@@ -53,6 +53,10 @@
         }
 
         //methods   
+        vm.createAlert = function(){
+            
+        }
+
         vm.endDateMax = function () {
             $scope.$broadcast('endSetDate')
         }

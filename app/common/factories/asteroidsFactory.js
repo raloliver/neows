@@ -6,13 +6,17 @@
     ])
 
     function AsteroidService($http, consts) {
-        
         function getAsteroidList(startDate, endDate) {
-            return $http.get(`${consts.apiURL}/feed?start_date=${startDate}&end_date=${endDate}&detailed=false&api_key=${consts.apiKEY}`);
+            return $http.get(`${consts.apiURL}/feed?start_date=${startDate}&end_date=${endDate}&detailed=false&api_key=${consts.apiKEY}`)
         }
-        
+
+        function getAsteroidAlerts() {
+            return $http.get('alerts.json')            
+        }
+
         return {
-            getAsteroidList: getAsteroidList            
+            getAsteroidList: getAsteroidList,
+            getAsteroidAlerts: getAsteroidAlerts            
         };
     }
 
