@@ -49,15 +49,10 @@
                 </div>
                 <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.create()" ng-disabled="form.$invalid"
                     ng-hide="vm.editable"><i class="fa fa-plus"></i> Adicionar</button>
-                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.update()" ng-disabled="form.$invalid"
-                    ng-show="vm.editable"><i class="fa fa-check"></i> Salvar</button>
-                <div class="input-group">
-                    <span class="input-group-addon">$</span>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                    <span class="input-group-addon">.00</span>
+                <div class="input-group" ng-show="vm.editable">
+                    <span class="input-group-addon"><i class="fa fa-arrow-left"></i></span>
+                    <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.update()" ng-disabled="form.$invalid"><i class="fa fa-check"></i> Salvar</button>
                 </div>
-                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.update()" ng-disabled="form.$invalid"
-                    ng-show="vm.editable"><i class="fa fa-check"></i> Salvar</button>
             </div>
         </form>
     </div>

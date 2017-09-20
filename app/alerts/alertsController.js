@@ -33,7 +33,7 @@
             vm.editable = true
         }
 
-        vm.update = function(index){
+        vm.update = function(){
             vm.asteroid = {}
             vm.editable = false            
         };
