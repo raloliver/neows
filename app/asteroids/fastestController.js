@@ -10,11 +10,13 @@
         var vm = this
         const momentDate = Date.now()
 
+        //properties
         vm.asteroid = []
         vm.asteroids = []
         vm.endDate = moment(momentDate).format("YYYY-MM-DD")
         vm.startDate = moment(vm.endDate).subtract(6, "days").format("YYYY-MM-DD")
 
+        //functions
         vm.getAsteroidsFastest = function (startDate, endDate) {
             asteroidService.getAsteroidList(startDate, endDate)
                 .then((res) => vm.listAsteroidsFastest(res.data))
@@ -42,6 +44,7 @@
                 })
         }
 
+        //init
         vm.getAsteroidsFastest(vm.startDate, vm.endDate)
     }
 })()
