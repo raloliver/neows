@@ -1,1 +1,59 @@
 <h3 class="page-header text-center">Alertas</h3>
+
+<div ng-controller="alertsController as vm">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Nome</th>
+                            <th>Velocidade</th>
+                            <th>Perigoso</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(item, asteroid) in vm.asteroids">
+                            <td>{{asteroid.date}}</td>
+                            <td>{{asteroid.name}}</td>
+                            <td>{{asteroid.velocity}} km/h</td>
+                            <td><i ng-show="asteroid.hazardous" class="fa fa-check text-danger"></i></td>
+                            <td>
+                                <a href="#!" title="Editar Alerta" class="well-sm" ng-click="vm.edit(item); $event.preventDefault();"><i class="fa fa-pencil text-warning"></i></a>
+                                <a href="#!" title="Excluir Alerta" class="well-sm" ng-click="vm.delete(item); $event.preventDefault();"><i class="fa fa-trash-o text-muted"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form name="form" required>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <legend>Adicionar Novo Alerta</legend>
+                    <label class="control-label">Referência</label>
+                    <input type="number" class="form-control" ng-model="vm.asteroid.id" required>
+                    <label>Data</label>
+                    <input type="text" class="form-control" ng-model="vm.asteroid.date">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" ng-model="vm.asteroid.name">
+                    <label>Velocidade</label>
+                    <input type="text" class="form-control" ng-model="vm.asteroid.velocity">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="vm.asteroid.hazardous"> Perigoso
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.create()" ng-disabled="form.$invalid"
+                    ng-hide="vm.editable"><i class="fa fa-plus"></i> Adicionar</button>
+                <div class="input-group" ng-show="vm.editable">
+                    <span class="input-group-addon"><i class="fa fa-arrow-left"></i></span>
+                    <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.update()" ng-disabled="form.$invalid"><i class="fa fa-check"></i> Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
