@@ -20,6 +20,7 @@
 
         vm.listAsteroidsAlerts = function (data) {
             vm.asteroids = data
+            console.log(vm.asteroids)
         }
 
         //methods
