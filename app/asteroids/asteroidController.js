@@ -64,22 +64,6 @@
         }
 
         //methods   
-        vm.cloneAsteroid = function (index, {
-            name,
-            close_approach_data,
-            is_potentially_hazardous_asteroid,
-            neo_reference_id
-        }) {
-            let newAlert = vm.asteroid.splice(index, 0, {
-                id: neo_reference_id,
-                name: name,
-                date: close_approach_data[0].close_approach_date,
-                velocity: close_approach_data[0].relative_velocity.kilometers_per_hour,
-                hazardous: is_potentially_hazardous_asteroid
-            })
-            console.log(vm.asteroid[0])
-        }
-
         vm.clone = function (index, {
             name,
             close_approach_data,
@@ -133,7 +117,7 @@
             } else {
                 vm.initDateChange = !vm.initDateChange
             }
-        })        
+        })
     }
 
 })()

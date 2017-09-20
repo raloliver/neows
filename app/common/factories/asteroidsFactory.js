@@ -11,7 +11,7 @@
         }
 
         function getAsteroidAlerts() {
-            return $http.get('alerts.json')            
+            return $http.get('alerts.json')         
         }
 
         return {
