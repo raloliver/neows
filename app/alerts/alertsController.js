@@ -20,7 +20,6 @@
 
         vm.listAsteroidsAlerts = function (data) {
             vm.asteroids = data
-            console.log(vm.asteroids)
         }
 
         //methods
@@ -28,6 +27,16 @@
             vm.asteroids.splice(0, 0, vm.asteroid)
             vm.asteroid = ''
         }
+
+        vm.edit = function (asteroid) {
+            vm.asteroid = vm.asteroids[asteroid];           
+            vm.editable = true
+        }
+
+        vm.update = function(index){
+            vm.asteroid = {}
+            vm.editable = false            
+        };
 
         vm.delete = function (asteroid) {
             vm.asteroids.splice(asteroid, 1)

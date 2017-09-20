@@ -16,12 +16,13 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="(item, asteroid) in vm.asteroids">
-                            <td>{{:: asteroid.date}}</td>
-                            <td>{{:: asteroid.name}}</td>
-                            <td>{{:: asteroid.velocity}} km/h</td>
+                            <td>{{asteroid.date}}</td>
+                            <td>{{asteroid.name}}</td>
+                            <td>{{asteroid.velocity}} km/h</td>
                             <td><i ng-show="asteroid.hazardous" class="fa fa-check text-danger"></i></td>
                             <td>
-                                <a href="#!" title="Exluir Alerta" class="well-sm" ng-click="vm.delete(item); $event.preventDefault();"><i class="fa fa-trash-o text-muted"></i></a>
+                                <a href="#!" title="Editar Alerta" class="well-sm" ng-click="vm.edit(item); $event.preventDefault();"><i class="fa fa-pencil text-warning"></i></a>
+                                <a href="#!" title="Excluir Alerta" class="well-sm" ng-click="vm.delete(item); $event.preventDefault();"><i class="fa fa-trash-o text-muted"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -33,7 +34,9 @@
                 <div class="form-group">
                     <legend>Adicionar Novo Alerta</legend>
                     <label class="control-label">Referência</label>
-                    <input type="text" class="form-control" ng-model="vm.asteroid.id" required>
+                    <input type="number" class="form-control" ng-model="vm.asteroid.id" required>
+                    <label>Data</label>
+                    <input type="text" class="form-control" ng-model="vm.asteroid.date">
                     <label>Nome</label>
                     <input type="text" class="form-control" ng-model="vm.asteroid.name">
                     <label>Velocidade</label>
@@ -44,10 +47,18 @@
                         </label>
                     </div>
                 </div>
-                <br><br>
-                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.create()" ng-disabled="form.$invalid"><i class="fa fa-plus"></i> Adicionar</button>
+                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.create()" ng-disabled="form.$invalid"
+                    ng-hide="vm.editable"><i class="fa fa-plus"></i> Adicionar</button>
+                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.update()" ng-disabled="form.$invalid"
+                    ng-show="vm.editable"><i class="fa fa-check"></i> Salvar</button>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-addon">.00</span>
+                </div>
+                <button type="submit" class="btn btn-large btn-block btn-success btn-lg" ng-click="vm.update()" ng-disabled="form.$invalid"
+                    ng-show="vm.editable"><i class="fa fa-check"></i> Salvar</button>
             </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
