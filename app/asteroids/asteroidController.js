@@ -15,6 +15,7 @@
 
         //properties
         vm.activeDateTab = null
+        vm.alerts = []
         vm.asteroid = []
         vm.asteroids = {}
         vm.initDateChange = true
@@ -27,11 +28,6 @@
         vm.getAsteroids = function (startDate, endDate) {
             asteroidService.getAsteroidList(startDate, endDate)
                 .then((res) => vm.listAsteroids(res.data))
-        }
-
-        vm.createAlert = function () {
-            asteroidService.getAsteroidAlerts(vm.cloneAsteroid)
-                .then((res) => angular.copy(res.data))
         }
 
         vm.sendChangeDate = function (is) {
@@ -57,13 +53,23 @@
                 })
         }
 
+        vm.getAlerts = function () {
+            asteroidService.getAsteroidAlerts()
+                .then((res) => vm.listAlerts(res.data))
+        }
+
+        vm.listAlerts = function (data) {
+            vm.alerts = data
+            console.log(vm.alerts)
+        }
+
         //methods   
         vm.cloneAsteroid = function (index, {
             name,
             close_approach_data,
             is_potentially_hazardous_asteroid,
             neo_reference_id
-        }) {            
+        }) {
             let newAlert = vm.asteroid.splice(index, 0, {
                 id: neo_reference_id,
                 name: name,
@@ -71,8 +77,23 @@
                 velocity: close_approach_data[0].relative_velocity.kilometers_per_hour,
                 hazardous: is_potentially_hazardous_asteroid
             })
-            let clone = angular.copy(vm.asteroid[0])
-            console.log(vm.asteroid[0])   
+            console.log(vm.asteroid[0])
+        }
+
+        vm.clone = function (index, {
+            name,
+            close_approach_data,
+            is_potentially_hazardous_asteroid,
+            neo_reference_id
+        }) {
+            let newAlert = angular.copy(vm.alerts.push({
+                id: neo_reference_id,
+                name: name,
+                date: close_approach_data[0].close_approach_date,
+                velocity: close_approach_data[0].relative_velocity.kilometers_per_hour,
+                hazardous: is_potentially_hazardous_asteroid
+            }))
+            console.log(vm.alerts)
         }
 
         vm.endDateMax = function () {
@@ -101,8 +122,8 @@
             vm.getAsteroids(vm.startDate, vm.endDate)
         }
 
-        //init
-        //vm.createAlert()
+        //init   
+        vm.getAlerts()
         vm.getAsteroids(vm.startDate, vm.endDate)
         vm.sendChangeDate(true)
         $scope.$watch('vm.startSetDate', () => {
@@ -112,7 +133,7 @@
             } else {
                 vm.initDateChange = !vm.initDateChange
             }
-        })
+        })        
     }
 
 })()

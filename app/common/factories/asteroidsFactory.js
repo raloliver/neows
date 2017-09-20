@@ -10,7 +10,7 @@
             return $http.get(`${consts.apiURL}/feed?start_date=${startDate}&end_date=${endDate}&detailed=false&api_key=${consts.apiKEY}`)
         }
 
-        function getAsteroidAlerts(asteroid) {
+        function getAsteroidAlerts() {
             return $http.get('alerts.json')            
         }
 

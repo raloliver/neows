@@ -29,7 +29,7 @@
         }
 
         vm.edit = function (asteroid) {
-            vm.asteroid = vm.asteroids[asteroid];           
+            vm.asteroid = vm.asteroids[asteroid]       
             vm.editable = true
         }
 
